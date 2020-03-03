@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
+iostream
+-
+cmath
+-
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.cpp
+agents.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus_station.h
+vector
+-
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/ruta_facil.cpp
+cmath
+-
+fstream
+-
+iostream
+-
+string
+-
+agents.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
+Random64.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
+bus_station.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus_station.h
+
