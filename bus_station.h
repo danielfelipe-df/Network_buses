@@ -22,7 +22,7 @@ public:
 	int station_down;
 	
 	//Me dice cuántas personas máximo pueden estar en la estación
-	int Nmax;
+	int Nmax=300;
 	
 	//Funciones
 	int N(){return Ns.size() + Ni.size() + Ne.size();};
@@ -53,7 +53,7 @@ public:
 	int bus_left_down;
 	
 	//Me dice cuántas personas máximo pueden estar en la estación
-	int Nmax;
+	int Nmax=1000;
 	
 	//Funciones
 	int N(){return Ns.size() + Ni.size() + Ne.size();};

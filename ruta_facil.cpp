@@ -8,7 +8,7 @@
 
 /**********************************************************************************************/
 //Defino las variables globales de la epidemia
-const double beta = 1.0;
+const double beta = 0.5;
 const double Sa = 0.1;
 
 /**********************************************************************************************/
@@ -52,7 +52,7 @@ void erase_exposed(T *stop, int agent, int ilocation)
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, int t, int T=1);
+void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, double t, int T=1);
 
 /*Esta función hace el gillespie en las estaciones.
 'the_station' es la estación que va a tener la dinámica.
@@ -61,7 +61,7 @@ void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, int t, in
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int i, int t, int T=1);
+void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int i, double t, int T=1);
 
 /**********************************************************************************************/
 
@@ -138,15 +138,20 @@ int main(void)
 	}
 	
 	//Digo cuántos pasos de tiempo va a dar la simulación
-	int T=10;
+	double T=10;
 	
 	//Creo los arreglos auxiliares para el intercambio de personas
 	bus aux_buses[NB];
 	station aux_estaciones[NE];
+	
+	//Le doy las características a los arreglos auxiliares.
+	for(int i=0; i<NB; i++){aux_buses[i] = buses[i];}
+	for(int i=0; i<NE; i++){aux_estaciones[i] = estaciones[i];}
 
 	//Genero la dinámica 
-	for(int i=0; i<T; i++){
-		for(int j=0; j<NB; j++){aux_buses[j] = buses[j];}
+	for(double t=0; t<T; t++){
+		for(int j=0; j<NB; j++){if(aux_buses[j].Ni.size() != 0 && aux_buses[j].Ns.size() != 0){Gillespie_buses(aux_buses[j],people,j,t);}}
+		for(int j=0; j<NE; j++){Gillespie_estaciones(aux_estaciones[j],people,j,t);}	
 	}
 	
 	std::cout << aux_buses[0].N() << std::endl;
@@ -174,10 +179,10 @@ void imprimir_matriz(int *y, int N, int M)
 
 /**********************************************************************************************/
 
-void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, int t, int T)
+void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, double t, int T)
 {
 	//Inicio el tiempo
-	int aux_t=0;
+	double aux_t=0;
 	
 	//Creo los números aleatorios que me dirán el 'dt', el evento que pasará y el agente a escoger que realizará el evento.
 	Crandom ran1(145), ran2(324), ran3(897);
@@ -190,7 +195,7 @@ void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, int t, in
 	
 	//Abro el archivo para imprimir los datos
 	std::ofstream fout;
-	fout.open("bus_" + std::to_string(i) + ".csv", std::ofstream::app);
+	fout.open("Datos/bus_" + std::to_string(i) + ".csv", std::ofstream::app);
 	
 	while(aux_t<T){
 		//Defino la probabilidad con la cual se realizará el evento.
@@ -222,10 +227,10 @@ void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, int t, in
 
 /**********************************************************************************************/
 
-void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int i, int t, int T)
+void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int i, double t, int T)
 {
 	//Inicio el tiempo
-	int aux_t=0;
+	double aux_t=0;
 	
 	//Creo los números aleatorios que me dirán el 'dt', el evento que pasará y el agente a escoger que realizará el evento.
 	Crandom ran1(65), ran2(960), ran3(35);
@@ -238,7 +243,7 @@ void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int
 	
 	//Abro el archivo para imprimir los datos
 	std::ofstream fout;
-	fout.open("station_" + std::to_string(i) + ".csv", std::ofstream::app);
+	fout.open("Datos/station_" + std::to_string(i) + ".csv", std::ofstream::app);
 	
 	while(aux_t<T){
 		//Defino la probabilidad con la cual se realizará el evento.
