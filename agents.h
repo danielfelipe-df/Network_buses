@@ -10,6 +10,9 @@
 
 class agents {
 public:
+	//Número del infectado
+	int number;
+	
 	//Defino qué tipo de persona es
 	bool infected;
 	bool susceptible;
@@ -30,7 +33,7 @@ public:
 	agents();
 	
 	//Sobrecarga de operadores
-	agents operator=(agents &b){
+	agents operator=(agents &b){		
 		this->infected = b.infected;
 		this->susceptible = b.susceptible;
 		this->exposed = b.exposed;

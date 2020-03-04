@@ -9,6 +9,7 @@
 #define BUS_STATION_H_
 
 #include <vector>
+#include "agents.h"
 
 class bus{
 public:
@@ -34,7 +35,15 @@ public:
 		this->Ne = b.Ne;
 		this->station_up = b.station_up;
 		this->station_down = b.station_down;
-		return b;
+		return *this;
+	}
+	
+	friend class agents;
+	bus operator +=(agents &b){
+		if(b.infected){this->Ni.push_back(b.number);}
+		else if(b.susceptible){this->Ns.push_back(b.number);}
+		else{this->Ne.push_back(b.number);}
+		return *this;
 	}
 };
 
@@ -68,6 +77,14 @@ public:
 		this->bus_left_up = b.bus_left_up;
 		this->bus_left_down = b.bus_left_down;
 		return b;
+	}
+	
+	friend class agents;
+	station operator +=(agents &b){
+		if(b.infected){this->Ni.push_back(b.number);}
+		else if(b.susceptible){this->Ns.push_back(b.number);}
+		else{this->Ne.push_back(b.number);}
+		return *this;
 	}
 };
 

@@ -11,6 +11,9 @@
 const double beta = 0.5;
 const double Sa = 0.1;
 
+//Defino la variable global del número de agentes.
+int NP = 5000;
+
 /**********************************************************************************************/
 /*Esta función imprime la matriz
 'y' es la matriz.
@@ -63,6 +66,26 @@ void Gillespie_buses(bus &the_bus, std::vector<agents> &people, int i, double t,
 */
 void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int i, double t, int T=1);
 
+/*Esta función baja gente de los buses.
+'the_bus' es el bus del que se bajan.
+'people' es el vector que contiene a todos los agentes.
+'the_vector' es el vector que almacena los agentes que se bajan.
+'Max' número máximo de personas que pueden entrar a la estación. Es decir, número máximo de personas que se pueden bajar.
+'seed' es la semilla del número aleatorio.
+'prob' es el porcentaje de agentes que se bajan.(Por defecto es 0.1).
+*/
+void GoDownFromBus(bus &the_bus, std::vector<agents> &people, std::vector<agents> &the_vector, int Max, int seed, double prob=0.1);
+
+/*Esta función baja gente de las estaciones.
+'the_station' es el bus del que se bajan.
+'people' es el vector que contiene a todos los agentes.
+'the_vector' es el vector que almacena los agentes que se bajan.
+'Max' número máximo de personas que pueden entrar a la estación. Es decir, número máximo de personas que se pueden bajar.
+'seed' es la semilla del número aleatorio.
+'prob' es el porcentaje de agentes que se bajan.(Por defecto es 0.1).
+*/
+void GoUpToBus(station &the_station, std::vector<agents> &people, std::vector<agents> &the_vector, int Max, int seed, double prob=0.1);
+
 /**********************************************************************************************/
 
 int main(void)
@@ -75,12 +98,9 @@ int main(void)
 	station estaciones[NE];
 	bus buses[NB];
 	
-	//Defino el número de agentes.
-	int NA = 5000;
-	
 	//Creo los agentes
 	std::vector<agents> people;
-	people.resize(NA);
+	people.resize(NP);
 	
 	//Hago la matriz de adjacencia.
 	int matriz[NE*NB];
@@ -98,7 +118,7 @@ int main(void)
 		buses[i].station_up = i;
 		buses[i].station_down = i+1;
 		buses[(NE-1)+i].station_up = (NE-1)-i;
-		buses[(NE-1)+i].station_up = (NE-1)-(i+1);
+		buses[(NE-1)+i].station_down = (NE-1)-(i+1);
 		//std::cout << i << ' ' << i << ' ' << i+1 << std::endl;
 		//std::cout << (NE-1)+i << ' ' << (NE-1)-i << ' ' << (NE-1)-(i+1) << std::endl;
 	}
@@ -107,6 +127,7 @@ int main(void)
 	Crandom bran(0), sran(300), prob(123);
 	int the_bus, the_station;
 	for(unsigned int i=0; i<people.size(); i++){
+		people[i].number = i;
 		if(prob.r() < 0.3){
 			people[i].in_bus = true;
 			people[i].in_station = false;
@@ -122,7 +143,7 @@ int main(void)
 	}
 	
 	//Escojo la persona infectada. La agrego al vector Ni y lo quito del Ns.
-	int infected = (int)(prob.r()*NA);
+	int infected = (int)(prob.r()*NP);
 	people[infected].susceptible = false;
 	people[infected].infected = true;
 	int ilocation = people[infected].location;
@@ -140,22 +161,63 @@ int main(void)
 	//Digo cuántos pasos de tiempo va a dar la simulación
 	double T=10;
 	
-	//Creo los arreglos auxiliares para el intercambio de personas
-	bus aux_buses[NB];
-	station aux_estaciones[NE];
+	//Creo los arreglos auxiliares para el intercambio de personas	
+	std::vector<agents> go_up_to_bus[NB];
+	std::vector<agents> go_down_from_bus[NB];		
 	
-	//Le doy las características a los arreglos auxiliares.
-	for(int i=0; i<NB; i++){aux_buses[i] = buses[i];}
-	for(int i=0; i<NE; i++){aux_estaciones[i] = estaciones[i];}
+	//Declaro las variables auxiliares que dependen del bus.
+	int sta_down, sta_up;
+	
+	for(int i=0; i<NB; i++){std::cout << buses[i].N() << '\t';}
+	std::cout << std::endl;	
+	for(int i=0; i<NE; i++){std::cout << estaciones[i].N() << '\t';}
+	std::cout << std::endl;	
+	
+	std::cout << people.size() << std::endl;
 
 	//Genero la dinámica 
-	for(double t=0; t<T; t++){
-		for(int j=0; j<NB; j++){if(aux_buses[j].Ni.size() != 0 && aux_buses[j].Ns.size() != 0){Gillespie_buses(aux_buses[j],people,j,t);}}
-		for(int j=0; j<NE; j++){Gillespie_estaciones(aux_estaciones[j],people,j,t);}	
-	}
-	
-	std::cout << aux_buses[0].N() << std::endl;
-	
+	for(double t=0; t<T; t++){	
+		std::cout << "Time: " << t << '\t';
+		//Hago el Gillespie en cada uno de los buses y estaciones
+		for(int j=0; j<NB; j++){if(buses[j].Ni.size() != 0 && buses[j].Ns.size() != 0){Gillespie_buses(buses[j],people,j,t);}}
+		for(int j=0; j<NE; j++){Gillespie_estaciones(estaciones[j],people,j,t);}		
+		
+		//Hago el intercambio de personas de buses a estaciones.
+		for(int j=0; j<NB; j++){
+			//Miró a qué estación se baja y a qué estación se sube.			
+			sta_down = buses[j].station_down;
+			sta_up = buses[j].station_up;			
+			
+			//Guardo las personas que se bajan del bus. Las quito del bus, sin agregarlas a la estación.
+			GoDownFromBus(buses[j],people,go_down_from_bus[j],estaciones[sta_down].Nmax-estaciones[sta_down].N(),j*NB);			
+			
+			//Guardo las personas que se suben al bus. Las quito de la estación, sin agregarlas al bus.
+			GoUpToBus(estaciones[sta_up],people,go_up_to_bus[j],buses[j].Nmax-buses[j].N(),sta_up*NB+j);
+		}
+		
+		std::cout << t << '\t';
+		//Agrego las personas que bajé del bus a la estación.
+		for(int j=0; j<NB; j++){
+			sta_down = buses[j].station_down;
+			for(int k=0; k<go_down_from_bus[j].size(); k++){
+				estaciones[sta_down] += go_down_from_bus[j][k];
+			}
+			go_down_from_bus[j].clear();
+		}
+		
+		std::cout << t << '\t';
+		//Agrego las personas que bajé de la estación al bus.
+		for(int j=0; j<NB; j++){
+			sta_up = buses[j].station_up;
+			for(int k=0; k<go_up_to_bus[j].size(); k++){
+				buses[j] += go_up_to_bus[j][k];
+			}
+			go_up_to_bus[j].clear();
+		}
+		
+		std::cout << t << std::endl;
+		std::cout << people.size() << std::endl;
+	}	
 	
 	for(int i=0; i<NB; i++){std::cout << buses[i].N() << '\t';}
 	std::cout << std::endl;	
@@ -273,8 +335,10 @@ void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int
 			people[number_agt].exposed = true;
 		}
 		else if(prob < (a1+a2)/A){//Ingresa un susceptible.
+			NP++;
 			agents new_agent;
 			new_agent.location = i;
+			new_agent.number = NP;
 			people.push_back(new_agent);
 			the_station.Ns.push_back(people.size()-1);
 		}
@@ -305,3 +369,81 @@ void Gillespie_estaciones(station &the_station, std::vector<agents> &people, int
 	}
 	fout.close();
 }
+
+/**********************************************************************************************/
+
+void GoDownFromBus(bus &the_bus, std::vector<agents> &people, std::vector<agents> &the_vector, int Max, int seed, double prob)
+{
+	//Creo el número aleatorio que me dirá qué agente se bajará.
+	Crandom ran(seed);
+	
+	//Declaro la varible que se le asignara al agente.
+	int num_agent;
+	
+	//Hago la dinámica de bajar la gente de los buses
+	for(int i=0; i<the_bus.N(); i++){
+		if(the_vector.size() == Max){break;}
+		
+		if(ran.r() < prob){//Miro aleatoriamente si el agente se baja			
+			if(i < the_bus.Ns.size()){//Si es un susceptible, lo bajo.
+				num_agent = the_bus.Ns[i];
+				the_bus.Ns.erase( the_bus.Ns.begin() + i);
+				people[num_agent].in_bus = false;
+				people[num_agent].in_station = true;				
+			}
+			else if(i < the_bus.Ns.size() + the_bus.Ni.size()){//Si es un infectado, lo bajo.
+				num_agent = the_bus.Ni[0];
+				the_bus.Ni.erase( the_bus.Ni.begin() + 0);
+				people[num_agent].in_bus = false;
+				people[num_agent].in_station = true;
+			}
+			else{//Si es un expuesto, lo bajo.
+				num_agent = the_bus.Ne[i-(the_bus.Ns.size() + the_bus.Ni.size())];
+				the_bus.Ne.erase( the_bus.Ne.begin() + i-(the_bus.Ns.size() + the_bus.Ni.size()));
+				people[num_agent].in_bus = false;
+				people[num_agent].in_station = true;				
+			}
+			the_vector.push_back(people[num_agent]);			
+		}
+	}
+}
+
+/**********************************************************************************************/
+
+void GoUpToBus(station &the_station, std::vector<agents> &people, std::vector<agents> &the_vector, int Max, int seed, double prob)
+{
+	//Creo el número aleatorio que me dirá qué agente se bajará.
+	Crandom ran(seed);
+	
+	//Declaro la varible que se le asignara al agente.
+	int num_agent;
+		
+	//Hago la dinámica de bajar la gente de las estaciones.
+	for(int i=0; i<the_station.N(); i++){
+		if(the_vector.size() == Max){break;}
+			
+		if(ran.r() < prob){//Miro aleatoriamente si el agente se baja			
+			if(i < the_station.Ns.size()){//Si es un susceptible, lo bajo.
+				num_agent = the_station.Ns[i];
+				the_station.Ns.erase( the_station.Ns.begin() + i);
+				people[num_agent].in_bus = true;
+				people[num_agent].in_station = false;				
+			}
+			else if(i < the_station.Ns.size() + the_station.Ni.size()){//Si es un infectado, lo bajo.
+				num_agent = the_station.Ni[0];
+				the_station.Ni.erase( the_station.Ni.begin() + 0);
+				people[num_agent].in_bus = true;
+				people[num_agent].in_station = false;
+			}
+			else{//Si es un expuesto, lo bajo.
+				num_agent = the_station.Ne[i-(the_station.Ns.size() + the_station.Ni.size())];
+				the_station.Ne.erase( the_station.Ne.begin() + i-(the_station.Ns.size() + the_station.Ni.size()));
+				people[num_agent].in_bus = true;
+				people[num_agent].in_station = false;				
+			}
+			the_vector.push_back(people[num_agent]);			
+		}
+	}
+}
+
+
