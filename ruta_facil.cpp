@@ -308,8 +308,7 @@ void Gillespie_buses(bus &the_bus, int i, double t, int T)
 	int the_agent;
 	
 	//Abro el archivo para imprimir los datos
-	std::ofstream fout;
-	fout.open("Datos/bus_" + std::to_string(i) + ".csv", std::ofstream::app);
+	std::ofstream fout, fout1;	
 	
 	while(aux_t<T){
 		//Defino la probabilidad con la cual se realizará el evento.
@@ -334,11 +333,15 @@ void Gillespie_buses(bus &the_bus, int i, double t, int T)
 			//Elimino al agente del vector de susceptibles.
 			the_bus.Ns.erase( the_bus.Ns.begin() + the_agent);			
 		}
-		
+	
 		//Imprimo los datos
+		fout.open("Datos/bus_" + std::to_string(i) + ".csv", std::ofstream::app);
 		fout << t + aux_t << '\t' << the_bus.Ns.size() << '\t' << the_bus.Ne.size() << '\t' << the_bus.Ni.size() << std::endl;
+		fout.close();
+		fout1.open("Datos/bus.csv", std::ofstream::app);		
+		fout1 << t + aux_t << '\t' << the_bus.Ns.size() << '\t' << the_bus.Ne.size() << '\t' << the_bus.Ni.size() << std::endl;
+		fout1.close();
 	}
-	fout.close();
 }
 
 /**********************************************************************************************/
