@@ -33,6 +33,12 @@ iostream
 -
 string
 -
+algorithm
+-
+iterator
+-
+vector
+-
 agents.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
 Random64.h

@@ -32,6 +32,7 @@ public:
 	//Función de iniciación
 	agents();
 	
+	/*
 	//Sobrecarga de operadores
 	agents operator=(agents &b){		
 		this->infected = b.infected;
@@ -42,8 +43,8 @@ public:
 		this->in_bus = b.in_bus;
 		this->in_station = b.in_station;
 		this->location = b.location;
-		return b;
-	}
+		return *this;
+	}*/
 };
 
 #endif /* AGENTS_H_ */
