@@ -21,9 +21,11 @@ int main(void)
 	int matriz[NE*NB];
 	for(int i=0; i<(NE*NB); i++){matriz[i]=0;}
 	//Aquí defino los enlaces entre las estaciones y los buses
-	for(int i=0; i<NE; i++){
-		matriz[i*NB + i] = 1;		
-		matriz[i*NB + (NB-(i+1))] = 1;		
+	for(int i=0; i<(NE-1); i++){
+		matriz[i*NB + i] = 1;
+		matriz[(i+1)*NB + i] = -1;
+		matriz[((NE-1)-i)*NB + ((NE-1)+i)] = 1;
+		matriz[((NE-1)-(i+1))*NB + ((NE-1)+i)] = -1;
 	}	
 	
 	imprimir_matriz(matriz,NE,2*(NE-1));
@@ -34,8 +36,8 @@ int main(void)
 		buses[i].station_down = i+1;
 		buses[(NE-1)+i].station_up = (NE-1)-i;
 		buses[(NE-1)+i].station_down = (NE-1)-(i+1);
-		//std::cout << i << ' ' << i << ' ' << i+1 << std::endl;
-		//std::cout << (NE-1)+i << ' ' << (NE-1)-i << ' ' << (NE-1)-(i+1) << std::endl;
+		std::cout << NE + i << ' ' << i << ' ' << i+1 << std::endl;
+		std::cout << NE + (NE-1)+i << ' ' << (NE-1)-i << ' ' << (NE-1)-(i+1) << std::endl;
 	}
 	
 	//Aquí le asigno la población inicial a las estaciones y los buses
@@ -86,8 +88,8 @@ int main(void)
 	fout.open("Datos/susceptibles.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}
 	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}
 	fout << std::endl;
 	fout.close();
 			
@@ -95,8 +97,8 @@ int main(void)
 	fout.open("Datos/expuestos.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}
 	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}	
 	fout << std::endl;
 	fout.close();
 			
@@ -104,8 +106,8 @@ int main(void)
 	fout.open("Datos/infectados.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}
 	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}
 	fout << std::endl;
 	fout.close();
 
@@ -160,8 +162,8 @@ int main(void)
 		fout.open("Datos/susceptibles.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}		
 		fout << std::endl;
 		fout.close();
 		
@@ -169,8 +171,8 @@ int main(void)
 		fout.open("Datos/expuestos.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}		
 		fout << std::endl;
 		fout.close();
 		
@@ -178,8 +180,8 @@ int main(void)
 		fout.open("Datos/infectados.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}		
 		fout << std::endl;
 		fout.close();
 	}	

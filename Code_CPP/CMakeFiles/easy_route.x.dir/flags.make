@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I"/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/." 
+CXX_INCLUDES = -I"/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/." 
 

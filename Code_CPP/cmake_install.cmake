@@ -1,4 +1,4 @@
-# Install script for directory: /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus
+# Install script for directory: /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

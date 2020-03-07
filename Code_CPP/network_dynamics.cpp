@@ -4,12 +4,14 @@
 
 void imprimir_matriz(int *y, int N, int M)
 {
+	std::ofstream fout("matrix.csv");
 	for(int i=0; i<N; i++){
 		for(int j=0; j<M; j++){
-			std::cout << y[i*M + j] << ' ';			
+			fout << y[i*M + j] << '\t';			
 		}
-		std::cout << std::endl;
+		fout << std::endl;
 	}
+	fout.close();
 }
 
 /**********************************************************************************************/

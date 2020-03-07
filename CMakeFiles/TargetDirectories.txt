@@ -1,3 +1,0 @@
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/CMakeFiles/rebuild_cache.dir
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/CMakeFiles/easy_route.x.dir
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/CMakeFiles/edit_cache.dir
