@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.cpp
+Random64.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
+
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
 iostream
 -
@@ -18,11 +22,33 @@ agents.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
 
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus_station.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus.h
 vector
 -
 agents.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/definitions.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/network_dynamics.cpp
+network_dynamics.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/network_dynamics.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/network_dynamics.h
+iostream
+-
+fstream
+-
+vector
+-
+definitions.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/definitions.h
+bus.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus.h
+Random64.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
+station.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/station.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/ruta_facil.cpp
 cmath
@@ -39,10 +65,12 @@ iterator
 -
 vector
 -
+network_dynamics.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/network_dynamics.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/station.h
+vector
+-
 agents.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/agents.h
-Random64.h
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Random64.h
-bus_station.h
-/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/bus_station.h
 

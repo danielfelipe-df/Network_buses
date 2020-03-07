@@ -133,7 +133,7 @@ CMAKE_OBJCOPY:FILEPATH=/usr/bin/objcopy
 CMAKE_OBJDUMP:FILEPATH=/usr/bin/objdump
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=Easy_route
+CMAKE_PROJECT_NAME:STATIC=Network_bus
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -199,6 +199,12 @@ Easy_route_BINARY_DIR:STATIC=/home/daniel/Universidad/Física 2019-02/Coronaviru
 
 //Value Computed by CMake
 Easy_route_SOURCE_DIR:STATIC=/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus
+
+//Value Computed by CMake
+Network_bus_BINARY_DIR:STATIC=/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus
+
+//Value Computed by CMake
+Network_bus_SOURCE_DIR:STATIC=/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus
 
 
 ########################
