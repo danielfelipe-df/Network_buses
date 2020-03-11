@@ -159,13 +159,6 @@ int main(void)
 			go_up_to_bus[j].clear();
 		}
 		
-		//Hacer el intercambio de pasajeros de un bus a otro.
-		for(int j=0; j<NB; j++){
-			buses[(j+1)%NB].Ni = aux_buses[j].Ni;
-			buses[(j+1)%NB].Ne = aux_buses[j].Ne;
-			buses[(j+1)%NB].Ns = aux_buses[j].Ns;
-		}		
-		
 		std::cout << t << std::endl;
 		std::cout << count_NP << std::endl;
 		
@@ -174,7 +167,7 @@ int main(void)
 		//Imprimo los datos
 		fout << t+1;
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}		
+		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ns.size();}		
 		fout << std::endl;
 		fout.close();
 		
@@ -183,7 +176,7 @@ int main(void)
 		//Imprimo los datos
 		fout << t+1;
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}		
+		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ne.size();}		
 		fout << std::endl;
 		fout.close();
 		
@@ -192,9 +185,16 @@ int main(void)
 		//Imprimo los datos
 		fout << t+1;
 		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}		
+		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ni.size();}		
 		fout << std::endl;
 		fout.close();
+		
+		//Hacer el intercambio de pasajeros de un bus a otro.
+		for(int j=0; j<NB; j++){
+			buses[(j+1)%NB].Ni = aux_buses[j].Ni;
+			buses[(j+1)%NB].Ne = aux_buses[j].Ne;
+			buses[(j+1)%NB].Ns = aux_buses[j].Ns;
+		}		
 	}	
 	
 	for(int i=0; i<NB; i++){std::cout << buses[i].N() << '\t';}
