@@ -9,6 +9,9 @@
 
 int main(void)
 {
+	//Defino la variable que después me contará el número total de susceptibles, expuestos e infectados en el sistema.
+	int suma;
+	
 	//Defino los vectores de buses y estaciones.
 	station estaciones[NE];
 	bus buses[NB];
@@ -85,30 +88,45 @@ int main(void)
 	std::ofstream fout;	
 	
 	//Abro el archivo para imprimir los susceptibles.
+	suma = 0;
 	fout.open("Datos/susceptibles.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();}
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();}
+	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();	suma += estaciones[j].Ns.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();			suma += buses[j].Ns.size();}
 	fout << std::endl;
+	fout.close();
+	
+	fout.open("Datos/total.csv", std::ofstream::app);
+	fout << 0 << '\t' << suma;
 	fout.close();
 			
 	//Abro el archivo para imprimir los susceptibles.
+	suma = 0;
 	fout.open("Datos/expuestos.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();}
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();}	
+	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();	suma += estaciones[j].Ne.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();			suma += buses[j].Ne.size();}	
 	fout << std::endl;
+	fout.close();
+	
+	fout.open("Datos/total.csv", std::ofstream::app);
+	fout << '\t' << suma;
 	fout.close();
 			
 	//Abro el archivo para imprimir los susceptibles.
+	suma = 0;
 	fout.open("Datos/infectados.csv", std::ofstream::app);
 	//Imprimo los datos
 	fout << 0;
-	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();}
-	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}
+	for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();	suma += estaciones[j].Ni.size();}
+	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();			suma += buses[j].Ni.size();}
 	fout << std::endl;
+	fout.close();
+	
+	fout.open("Datos/total.csv", std::ofstream::app);
+	fout << '\t' << suma << std::endl;
 	fout.close();
 	
 	//Le doy los valores actuales de cada bus a los arreglos auxiliares.
@@ -163,31 +181,47 @@ int main(void)
 		std::cout << count_NP << std::endl;
 		
 		//Abro el archivo para imprimir los susceptibles.
+		suma = 0;
 		fout.open("Datos/susceptibles.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ns.size();}		
+		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ns.size();	suma += estaciones[j].Ns.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ns.size();			suma += buses[j].Ns.size();}
 		fout << std::endl;
 		fout.close();
-		
+			
+		fout.open("Datos/total.csv", std::ofstream::app);
+		fout << t+1 << '\t' << suma;
+		fout.close();
+					
 		//Abro el archivo para imprimir los susceptibles.
+		suma = 0;
 		fout.open("Datos/expuestos.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ne.size();}		
+		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ne.size();	suma += estaciones[j].Ne.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ne.size();			suma += buses[j].Ne.size();}	
 		fout << std::endl;
 		fout.close();
 		
+		fout.open("Datos/total.csv", std::ofstream::app);
+		fout << '\t' << suma;
+		fout.close();
+					
 		//Abro el archivo para imprimir los susceptibles.
+		suma = 0;
 		fout.open("Datos/infectados.csv", std::ofstream::app);
 		//Imprimo los datos
 		fout << t+1;
-		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();}
-		for(int j=0; j<NB; j++){fout << '\t' << aux_buses[j].Ni.size();}		
+		for(int j=0; j<NE; j++){fout << '\t' << estaciones[j].Ni.size();	suma += estaciones[j].Ni.size();}
+		for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();			suma += buses[j].Ni.size();}
 		fout << std::endl;
 		fout.close();
+			
+		fout.open("Datos/total.csv", std::ofstream::app);
+		fout << '\t' << suma << std::endl;;
+		fout.close();
+
 		
 		//Hacer el intercambio de pasajeros de un bus a otro.
 		for(int j=0; j<NB; j++){

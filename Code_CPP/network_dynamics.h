@@ -25,7 +25,7 @@ void imprimir_matriz(int *y, int N, int M);
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_buses(bus &the_bus, int i, double t, int T=1);
+void Gillespie_buses(bus &the_bus, int i, double t, int T=7);
 
 /**********************************************************************************************/
 
@@ -35,7 +35,7 @@ void Gillespie_buses(bus &the_bus, int i, double t, int T=1);
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_estaciones(station &the_station, int i, double t, int id_NP, int count_NP, int T=1);
+void Gillespie_estaciones(station &the_station, int i, double t, int id_NP, int count_NP, int T=7);
 
 /**********************************************************************************************/
 
