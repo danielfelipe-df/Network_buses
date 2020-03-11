@@ -110,6 +110,9 @@ int main(void)
 	for(int j=0; j<NB; j++){fout << '\t' << buses[j].Ni.size();}
 	fout << std::endl;
 	fout.close();
+	
+	//Le doy los valores actuales de cada bus a los arreglos auxiliares.
+	for(int j=0; j<NB; j++){aux_buses[j] = buses[j];}
 
 	//Genero la dinámica 
 	for(double t=0; t<T; t++){	
@@ -119,7 +122,11 @@ int main(void)
 		for(int j=0; j<NE; j++){Gillespie_estaciones(estaciones[j],j,id_NP,count_NP,t);}
 		
 		//Le doy los valores actuales de cada bus a los arreglos auxiliares.
-		for(int j=0; j<NB; j++){aux_buses[j] = buses[j];}
+		for(int j=0; j<NB; j++){
+			aux_buses[j].Ni = buses[j].Ni;
+			aux_buses[j].Ne = buses[j].Ne;
+			aux_buses[j].Ns = buses[j].Ns;
+		}
 		
 		//Hago el intercambio de personas de buses a estaciones.
 		for(int j=0; j<NB; j++){
@@ -128,10 +135,10 @@ int main(void)
 			sta_up = aux_buses[j].station_up;			
 			
 			//Guardo las personas que se bajan del bus. Las quito del bus, sin agregarlas a la estación.
-			GoDownFrom(aux_buses[j],go_down_from_bus[j],estaciones[sta_down].Nmax-estaciones[sta_down].N(),j*NB);			
+			GoDownFrom(aux_buses[j],go_down_from_bus[j],estaciones[sta_down].Nmax-estaciones[sta_down].N(),sta_down*100 + j*NB);			
 			
 			//Guardo las personas que se suben al bus. Las quito de la estación, sin agregarlas al bus.
-			GoDownFrom(estaciones[sta_up],go_up_to_bus[j],aux_buses[j].Nmax-aux_buses[j].N(),sta_up*NB+j);
+			GoDownFrom(estaciones[sta_up],go_up_to_bus[j],aux_buses[j].Nmax-aux_buses[j].N(),sta_up*NB+j*NE);
 		}
 		
 		std::cout << t << '\t';
@@ -153,7 +160,11 @@ int main(void)
 		}
 		
 		//Hacer el intercambio de pasajeros de un bus a otro.
-		for(int j=0; j<NB; j++){buses[(j+1)%NB] = aux_buses[j];}		
+		for(int j=0; j<NB; j++){
+			buses[(j+1)%NB].Ni = aux_buses[j].Ni;
+			buses[(j+1)%NB].Ne = aux_buses[j].Ne;
+			buses[(j+1)%NB].Ns = aux_buses[j].Ns;
+		}		
 		
 		std::cout << t << std::endl;
 		std::cout << count_NP << std::endl;

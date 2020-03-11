@@ -12,8 +12,8 @@ public:
 	std::vector<agents> Ne; //Expuesta
 	
 	//Me dice de qué estación deja subir y bajar
-	int station_up;
-	int station_down;
+	int station_up; //Estación de la cuál se suben personas
+	int station_down; //Estación de la cuál se bajan personas
 	
 	//Me dice cuántas personas máximo pueden estar en la estación
 	int Nmax=300;

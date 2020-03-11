@@ -75,7 +75,7 @@ void Gillespie_estaciones(station &the_station, int i, double t, int id_NP, int 
 	double aux_t=0;
 	
 	//Creo los números aleatorios que me dirán el 'dt', el evento que pasará y el agente a escoger que realizará el evento.
-	Crandom ran1(65), ran2(960), ran3(35);
+	Crandom ran1(650), ran2(96), ran3(350);
 	
 	//Creo las variables a utilizar del algoritmo.
 	double prob, a1, a2, a3, A, dt, S, E, I, N;

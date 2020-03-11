@@ -45,12 +45,34 @@ infected = leer_matrix("Code_CPP/Datos/infectados.csv")
 color = bi.color(G)
 pos=nx.spring_layout(G)
 
-(n,l) = infected.shape
-#plt.ion()
-#plt.show()
-#plt.savefig('archivo.gif')
+'''
+(p,q) = matrix.shape
+list_color = []
+for m in range(len(color)):
+    if(color[m] == 0):
+        list_color.append('b')
+    else:
+        list_color.append('r')
+        
+list_labels = {}
+for i in range(p):
+    list_labels[i] = 'E' + str(i+1)
+for i in range(q):
+    list_labels[p+i] = 'T' + str(i+1)
 
-for i in range(n):
+nx.draw_networkx(G,pos, node_color=list_color, labels=list_labels, font_size = 11, node_size = 200)
+plt.title("Gráfica")
+#plt.savefig('Imagen/' + legend + '.pdf')
+plt.show()
+#plt.clf()
+'''
+
+
+(n,l) = infected.shape
+plt.ion()
+plt.show()
+#plt.savefig('archivo.gif')
+for i in range(50):
     list_color = []
     for m in range(len(color)):
         if(infected.item((i,m+1)) == 1):
@@ -61,7 +83,7 @@ for i in range(n):
             list_color.append('r')
         
     nx.draw_networkx(G,pos, node_color=list_color, font_size = 11, node_size = 200)
-    plt.pause(0.1)
+    plt.pause(0.5)
     plt.clf()
     #plt.title("Gráfica")
     #plt.savefig('Imagen/' + legend + '.pdf')

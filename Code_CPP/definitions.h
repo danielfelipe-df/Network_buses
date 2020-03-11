@@ -6,7 +6,7 @@ const int NE = 10;
 const int NB = 2*(NE-1);
 
 //Defino las variables globales de la epidemia
-const double beta = 0.1	;
+const double beta = 0.749;
 const double Sa = 0.01;
 
 #endif
