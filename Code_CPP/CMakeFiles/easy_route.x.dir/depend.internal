@@ -7,11 +7,20 @@ CMakeFiles/easy_route.x.dir/Random64.cpp.o
 CMakeFiles/easy_route.x.dir/agents.cpp.o
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.cpp
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
+CMakeFiles/easy_route.x.dir/bus.cpp.o
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.cpp
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
+CMakeFiles/easy_route.x.dir/net_header.cpp.o
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/Random64.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.cpp
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/Random64.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/definitions.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.cpp
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h
@@ -20,6 +29,12 @@ CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/definitions.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.h
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/ruta_facil.cpp
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h
+CMakeFiles/easy_route.x.dir/station.cpp.o
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
+ /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.cpp
  /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h

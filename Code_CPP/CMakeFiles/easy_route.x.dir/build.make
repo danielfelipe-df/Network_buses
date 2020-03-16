@@ -83,9 +83,35 @@ CMakeFiles/easy_route.x.dir/agents.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/easy_route.x.dir/agents.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.cpp" -o CMakeFiles/easy_route.x.dir/agents.cpp.s
 
+CMakeFiles/easy_route.x.dir/bus.cpp.o: CMakeFiles/easy_route.x.dir/flags.make
+CMakeFiles/easy_route.x.dir/bus.cpp.o: bus.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/easy_route.x.dir/bus.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/easy_route.x.dir/bus.cpp.o -c "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.cpp"
+
+CMakeFiles/easy_route.x.dir/bus.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/easy_route.x.dir/bus.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.cpp" > CMakeFiles/easy_route.x.dir/bus.cpp.i
+
+CMakeFiles/easy_route.x.dir/bus.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/easy_route.x.dir/bus.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.cpp" -o CMakeFiles/easy_route.x.dir/bus.cpp.s
+
+CMakeFiles/easy_route.x.dir/net_header.cpp.o: CMakeFiles/easy_route.x.dir/flags.make
+CMakeFiles/easy_route.x.dir/net_header.cpp.o: net_header.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/easy_route.x.dir/net_header.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/easy_route.x.dir/net_header.cpp.o -c "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.cpp"
+
+CMakeFiles/easy_route.x.dir/net_header.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/easy_route.x.dir/net_header.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.cpp" > CMakeFiles/easy_route.x.dir/net_header.cpp.i
+
+CMakeFiles/easy_route.x.dir/net_header.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/easy_route.x.dir/net_header.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.cpp" -o CMakeFiles/easy_route.x.dir/net_header.cpp.s
+
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: CMakeFiles/easy_route.x.dir/flags.make
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: network_dynamics.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o -c "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.cpp"
 
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.i: cmake_force
@@ -98,7 +124,7 @@ CMakeFiles/easy_route.x.dir/network_dynamics.cpp.s: cmake_force
 
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: CMakeFiles/easy_route.x.dir/flags.make
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: ruta_facil.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o -c "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/ruta_facil.cpp"
 
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.i: cmake_force
@@ -109,23 +135,42 @@ CMakeFiles/easy_route.x.dir/ruta_facil.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/easy_route.x.dir/ruta_facil.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/ruta_facil.cpp" -o CMakeFiles/easy_route.x.dir/ruta_facil.cpp.s
 
+CMakeFiles/easy_route.x.dir/station.cpp.o: CMakeFiles/easy_route.x.dir/flags.make
+CMakeFiles/easy_route.x.dir/station.cpp.o: station.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/easy_route.x.dir/station.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/easy_route.x.dir/station.cpp.o -c "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.cpp"
+
+CMakeFiles/easy_route.x.dir/station.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/easy_route.x.dir/station.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.cpp" > CMakeFiles/easy_route.x.dir/station.cpp.i
+
+CMakeFiles/easy_route.x.dir/station.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/easy_route.x.dir/station.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.cpp" -o CMakeFiles/easy_route.x.dir/station.cpp.s
+
 # Object files for target easy_route.x
 easy_route_x_OBJECTS = \
 "CMakeFiles/easy_route.x.dir/Random64.cpp.o" \
 "CMakeFiles/easy_route.x.dir/agents.cpp.o" \
+"CMakeFiles/easy_route.x.dir/bus.cpp.o" \
+"CMakeFiles/easy_route.x.dir/net_header.cpp.o" \
 "CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o" \
-"CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o"
+"CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o" \
+"CMakeFiles/easy_route.x.dir/station.cpp.o"
 
 # External object files for target easy_route.x
 easy_route_x_EXTERNAL_OBJECTS =
 
 easy_route.x: CMakeFiles/easy_route.x.dir/Random64.cpp.o
 easy_route.x: CMakeFiles/easy_route.x.dir/agents.cpp.o
+easy_route.x: CMakeFiles/easy_route.x.dir/bus.cpp.o
+easy_route.x: CMakeFiles/easy_route.x.dir/net_header.cpp.o
 easy_route.x: CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o
 easy_route.x: CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o
+easy_route.x: CMakeFiles/easy_route.x.dir/station.cpp.o
 easy_route.x: CMakeFiles/easy_route.x.dir/build.make
 easy_route.x: CMakeFiles/easy_route.x.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable easy_route.x"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable easy_route.x"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/easy_route.x.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

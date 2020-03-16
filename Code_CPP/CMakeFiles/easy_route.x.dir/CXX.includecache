@@ -22,6 +22,10 @@ agents.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
 
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.cpp
+bus.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
+
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
 vector
 -
@@ -29,6 +33,18 @@ agents.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/definitions.h
+Random64.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/Random64.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.cpp
+net_header.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
+Random64.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/Random64.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
+vector
+-
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.cpp
 network_dynamics.h
@@ -41,6 +57,8 @@ fstream
 -
 vector
 -
+algorithm
+-
 definitions.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/definitions.h
 bus.h
@@ -49,6 +67,8 @@ Random64.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/Random64.h
 station.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h
+net_header.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/ruta_facil.cpp
 cmath
@@ -67,10 +87,18 @@ vector
 -
 network_dynamics.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/network_dynamics.h
+net_header.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/net_header.h
+
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.cpp
+station.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h
 
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/station.h
 vector
 -
 agents.h
 /home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/agents.h
+bus.h
+/home/daniel/Universidad/Física 2019-02/Coronavirus/Network_bus/Code_CPP/bus.h
 

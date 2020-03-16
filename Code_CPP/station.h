@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "agents.h"
+#include "bus.h"
 
 class station{
 public:
@@ -12,10 +13,7 @@ public:
 	std::vector<agents> Ne; //Expuesta
 	
 	//Me dice de qué bus deja subir y bajar
-	int bus_right_up;
-	int bus_right_down;
-	int bus_left_up;
-	int bus_left_down;
+	int location;
 	
 	//Me dice cuántas personas máximo pueden estar en la estación
 	int Nmax=1000;
@@ -23,15 +21,13 @@ public:
 	//Funciones
 	int N(){return Ns.size() + Ni.size() + Ne.size();};
 	
+	void clear();
+	
 	//Sobrecarga de operadores
 	station operator=(station b){
 		this->Ni = b.Ni;
 		this->Ns = b.Ns;
-		this->Ne = b.Ne;
-		this->bus_right_up = b.bus_right_up;
-		this->bus_right_down = b.bus_right_down;
-		this->bus_left_up = b.bus_left_up;
-		this->bus_left_down = b.bus_left_down;
+		this->Ne = b.Ne;		
 		return b;
 	}
 	
@@ -41,7 +37,15 @@ public:
 		else if(b.susceptible){this->Ns.push_back(b);}
 		else{this->Ne.push_back(b);}
 		return *this;
-	}	
+	}
+	
+	friend class bus;
+	station operator+(const bus b){
+		this->Ni.insert(this->Ni.end(), b.Ni.begin(), b.Ni.end());
+		this->Ns.insert(this->Ns.end(), b.Ns.begin(), b.Ns.end());
+		this->Ne.insert(this->Ne.end(), b.Ne.begin(), b.Ne.end());
+		return *this;
+	}
 };
 
 #endif

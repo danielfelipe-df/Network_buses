@@ -7,10 +7,19 @@ CMakeFiles/easy_route.x.dir/Random64.cpp.o: Random64.h
 CMakeFiles/easy_route.x.dir/agents.cpp.o: agents.cpp
 CMakeFiles/easy_route.x.dir/agents.cpp.o: agents.h
 
+CMakeFiles/easy_route.x.dir/bus.cpp.o: agents.h
+CMakeFiles/easy_route.x.dir/bus.cpp.o: bus.cpp
+CMakeFiles/easy_route.x.dir/bus.cpp.o: bus.h
+
+CMakeFiles/easy_route.x.dir/net_header.cpp.o: Random64.h
+CMakeFiles/easy_route.x.dir/net_header.cpp.o: net_header.cpp
+CMakeFiles/easy_route.x.dir/net_header.cpp.o: net_header.h
+
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: Random64.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: agents.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: bus.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: definitions.h
+CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: net_header.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: network_dynamics.cpp
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: network_dynamics.h
 CMakeFiles/easy_route.x.dir/network_dynamics.cpp.o: station.h
@@ -19,7 +28,13 @@ CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: Random64.h
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: agents.h
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: bus.h
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: definitions.h
+CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: net_header.h
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: network_dynamics.h
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: ruta_facil.cpp
 CMakeFiles/easy_route.x.dir/ruta_facil.cpp.o: station.h
+
+CMakeFiles/easy_route.x.dir/station.cpp.o: agents.h
+CMakeFiles/easy_route.x.dir/station.cpp.o: bus.h
+CMakeFiles/easy_route.x.dir/station.cpp.o: station.cpp
+CMakeFiles/easy_route.x.dir/station.cpp.o: station.h
 

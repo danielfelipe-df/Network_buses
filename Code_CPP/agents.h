@@ -45,6 +45,12 @@ public:
 		this->location = b.location;
 		return *this;
 	}*/
+	
+	//Sobrecarga de operadores
+	bool operator==(const agents b){
+		if(this->number == b.number){return true;}
+		else{return false;}
+	}
 };
 
 #endif /* AGENTS_H_ */

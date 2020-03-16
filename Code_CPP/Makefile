@@ -177,6 +177,60 @@ agents.cpp.s:
 	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/agents.cpp.s
 .PHONY : agents.cpp.s
 
+bus.o: bus.cpp.o
+
+.PHONY : bus.o
+
+# target to build an object file
+bus.cpp.o:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/bus.cpp.o
+.PHONY : bus.cpp.o
+
+bus.i: bus.cpp.i
+
+.PHONY : bus.i
+
+# target to preprocess a source file
+bus.cpp.i:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/bus.cpp.i
+.PHONY : bus.cpp.i
+
+bus.s: bus.cpp.s
+
+.PHONY : bus.s
+
+# target to generate assembly for a file
+bus.cpp.s:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/bus.cpp.s
+.PHONY : bus.cpp.s
+
+net_header.o: net_header.cpp.o
+
+.PHONY : net_header.o
+
+# target to build an object file
+net_header.cpp.o:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/net_header.cpp.o
+.PHONY : net_header.cpp.o
+
+net_header.i: net_header.cpp.i
+
+.PHONY : net_header.i
+
+# target to preprocess a source file
+net_header.cpp.i:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/net_header.cpp.i
+.PHONY : net_header.cpp.i
+
+net_header.s: net_header.cpp.s
+
+.PHONY : net_header.s
+
+# target to generate assembly for a file
+net_header.cpp.s:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/net_header.cpp.s
+.PHONY : net_header.cpp.s
+
 network_dynamics.o: network_dynamics.cpp.o
 
 .PHONY : network_dynamics.o
@@ -231,6 +285,33 @@ ruta_facil.cpp.s:
 	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/ruta_facil.cpp.s
 .PHONY : ruta_facil.cpp.s
 
+station.o: station.cpp.o
+
+.PHONY : station.o
+
+# target to build an object file
+station.cpp.o:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/station.cpp.o
+.PHONY : station.cpp.o
+
+station.i: station.cpp.i
+
+.PHONY : station.i
+
+# target to preprocess a source file
+station.cpp.i:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/station.cpp.i
+.PHONY : station.cpp.i
+
+station.s: station.cpp.s
+
+.PHONY : station.s
+
+# target to generate assembly for a file
+station.cpp.s:
+	$(MAKE) -f CMakeFiles/easy_route.x.dir/build.make CMakeFiles/easy_route.x.dir/station.cpp.s
+.PHONY : station.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -246,12 +327,21 @@ help:
 	@echo "... agents.o"
 	@echo "... agents.i"
 	@echo "... agents.s"
+	@echo "... bus.o"
+	@echo "... bus.i"
+	@echo "... bus.s"
+	@echo "... net_header.o"
+	@echo "... net_header.i"
+	@echo "... net_header.s"
 	@echo "... network_dynamics.o"
 	@echo "... network_dynamics.i"
 	@echo "... network_dynamics.s"
 	@echo "... ruta_facil.o"
 	@echo "... ruta_facil.i"
 	@echo "... ruta_facil.s"
+	@echo "... station.o"
+	@echo "... station.i"
+	@echo "... station.s"
 .PHONY : help
 
 
