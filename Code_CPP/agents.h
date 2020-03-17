@@ -15,7 +15,8 @@ public:
 	
 	//Defino qué tipo de persona es
 	bool infected;
-	bool susceptible;
+	bool susceptible1;
+	bool susceptible2;
 	bool exposed;
 
 	//Me controla el tiempo que lleva el personaje en el bus o estación
@@ -30,7 +31,7 @@ public:
 	int location;
 	
 	//Función de iniciación
-	agents();
+	agents(double p);
 	
 	/*
 	//Sobrecarga de operadores

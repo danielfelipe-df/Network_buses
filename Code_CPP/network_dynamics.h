@@ -27,7 +27,8 @@ void imprimir_matriz(int *y, int N, int M);
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_buses(bus &the_bus, network &y, std::vector<agents> &aux, int &exposed, int i, double t, int T=7);
+void Gillespie_buses(bus &the_bus, std::vector<agents> &aux, int &exposed, int i, double t, 
+										 double seed1, double seed2, double seed3,int T=7);
 
 /**********************************************************************************************/
 
@@ -37,7 +38,8 @@ void Gillespie_buses(bus &the_bus, network &y, std::vector<agents> &aux, int &ex
 't' es el tiempo absoluto.
 'T' es el tiempo que va a durar el algoritmo.
 */
-void Gillespie_estaciones(station &the_station, network &y, std::vector<agents> &aux, int &exposed, int i, double t, int id_NP, int count_NP, int T=7);
+bool Gillespie_estaciones(station &the_station, std::vector<agents> &aux, int &exposed, int i, double t,
+													int id_NP, int count_NP, double seed1, double seed2, double seed3,int T=7);
 
 /**********************************************************************************************/
 
@@ -49,61 +51,64 @@ void Gillespie_estaciones(station &the_station, network &y, std::vector<agents> 
 'prob' es el porcentaje de agentes que se bajan.(Por defecto es 0.1).
 */
 template<typename T>
-void GoDownFrom(T &the_stop, std::vector<agents> &the_vector, std::vector<agents> &aux, network &y, int Max, int seed, double prob=0.1)
+void GoDownFrom(T &the_stop, std::vector<agents> &the_vector, std::vector<agents> &aux, int Max, int seed, double prob=0.1)
 {
 	//Creo el número aleatorio que me dirá qué agente se bajará.
 	Crandom ran(seed);
 	
 	//Creo el iterador y el index
 	std::vector<agents>::iterator it;
-	int index;
+	int index, aux_i;
 	
 	//Hago la dinámica de bajar la gente de los buses
 	for(int i=0; i<the_stop.N(); i++){
 		if(the_vector.size() == Max){break;}
 		
 		if(ran.r() < prob){//Miro aleatoriamente si el agente se baja			
-			if(i < the_stop.Ns.size()){//Si es un susceptible, lo bajo.
+			if(i < the_stop.Ns1.size()){//Si es un susceptible, lo bajo.
 				//Guardo al agente en el vector auxiliar.
-				the_vector.push_back(the_stop.Ns[i]);
+				the_vector.push_back(the_stop.Ns1[i]);
 				//Reviso si el agente estaba en contacto con el infectado y lo quito.
-				if((it = std::find(aux.begin(), aux.end(), the_stop.Ns[i])) != aux.end()){
-					//Hallo el índice del agente.
-					index = std::distance(aux.begin(),it);
-					//Elimino la fila y columna correspondiente.
-					y.erase(y.begin() + index);
-					for(int j=0; j<y.size(); j++){y[j].erase(y[j].begin() + index);}
+				if((it = std::find(aux.begin(), aux.end(), the_stop.Ns1[i])) != aux.end()){					
 					//Si está, pues lo quito del vector.
 					aux.erase(it);					
 				}
 				//Elimino el agente susceptible del vector. 
-				the_stop.Ns.erase( the_stop.Ns.begin() + i);						
+				the_stop.Ns1.erase( the_stop.Ns1.begin() + i);						
 			}
-			else if(i < the_stop.Ns.size() + the_stop.Ni.size()){//Si es un infectado, lo bajo.
+			else if(i < the_stop.Ns1.size() + the_stop.Ns2.size()){//Si es un susceptible, lo bajo.
+				aux_i = i - the_stop.Ns1.size();
+				//Guardo al agente en el vector auxiliar.
+				the_vector.push_back(the_stop.Ns2[aux_i]);
+				//Reviso si el agente estaba en contacto con el infectado y lo quito.
+				if((it = std::find(aux.begin(), aux.end(), the_stop.Ns2[aux_i])) != aux.end()){					
+					//Si está, pues lo quito del vector.
+					aux.erase(it);					
+				}
+				//Elimino el agente susceptible del vector. 
+				the_stop.Ns2.erase( the_stop.Ns2.begin() + aux_i);						
+			}
+			else if(i < the_stop.Ns1.size() + the_stop.Ns2.size() + the_stop.Ni.size()){//Si es un infectado, lo bajo.				
 				//Guardo al agente en el vector auxiliar.
 				the_vector.push_back(the_stop.Ni[0]);
 				//Elimino todos los vecinos del infectado y la Ego_red. Pues se va a generar una nueva red al bajar.
-				aux.clear();
-				y.clear();
+				std::cout << "El infectado se cambia de lugar" << '\t';
+				aux.clear();				
 				//Elimino el agente infectado del vector.
 				the_stop.Ni.erase( the_stop.Ni.begin() + 0);	
-				//std::cout << "El infectado se cambia de lugar" << std::endl;
+				std::cout << "El infectado se cambia de lugar" << std::endl;
 			}
-			else{//Si es un expuesto, lo bajo.	
+			else{//Si es un expuesto, lo bajo.
+				aux_i = i - (the_stop.Ns1.size() + the_stop.Ns2.size() + the_stop.Ni.size());
 				//Guardo al agente en el vector auxiliar.
-				the_vector.push_back(the_stop.Ne[i-(the_stop.Ns.size() + the_stop.Ni.size())]);
+				the_vector.push_back(the_stop.Ne[aux_i]);
 				//Reviso si el agente estaba en contacto con el infectado y lo quito.
-				if((it = std::find(aux.begin(), aux.end(), the_stop.Ne[i-(the_stop.Ns.size() + the_stop.Ni.size())])) != aux.end()){
-					//Hallo el índice del agente.
-					index = std::distance(aux.begin(),it);
-					//Elimino la fila y columna correspondiente.
-					y.erase(y.begin() + index);
-					for(int j=0; j<y.size(); j++){y[j].erase(y[j].begin() + index);}
+				if((it = std::find(aux.begin(), aux.end(), the_stop.Ne[aux_i])) != aux.end()){					
 					//Si está, pues lo quito del vector.
 					aux.erase(it);					
 				}
 				//Elimino el agente expuesto del vector.
-				the_stop.Ne.erase( the_stop.Ne.begin() + i-(the_stop.Ns.size() + the_stop.Ni.size()));
+				the_stop.Ne.erase( the_stop.Ne.begin() + aux_i);
 			}			
 			//Como se quitó un agente, entonces se debe restar para poder obervarlos todos.
 			i--;

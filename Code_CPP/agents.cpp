@@ -7,17 +7,25 @@
 
 #include "agents.h"
 
-agents::agents()
+agents::agents(double p)
 {
-	infected = false;	
-	susceptible = true;
-	exposed = false;
-	
-	time_station = 0;
-	time_bus = 0;
-	
-	in_bus = false;
-	in_station = true;
+  if(p < 0.3){
+    susceptible2 = true;
+    susceptible1 = false;
+  }
+  else{
+    susceptible2 = false;
+    susceptible1 = true;
+  }
+  
+  infected = false;	
+  exposed = false;
+  
+  time_station = 0;
+  time_bus = 0;
+  
+  in_bus = false;
+  in_station = true;
 }
 
 

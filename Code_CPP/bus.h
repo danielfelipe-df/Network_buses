@@ -8,7 +8,8 @@ class bus{
 public:
 	//Me dice cuánta gente hay de cada tipo
 	std::vector<agents> Ni; //Infectada
-	std::vector<agents> Ns; //Susceptible
+	std::vector<agents> Ns1; //Susceptible1
+	std::vector<agents> Ns2; //Susceptible2
 	std::vector<agents> Ne; //Expuesta	
 	
 	//Me dice de qué estación deja subir y bajar
@@ -25,14 +26,16 @@ public:
 	int Nmax=300;
 	
 	//Funciones
-	int N(){return Ns.size() + Ni.size() + Ne.size();};
+	int N(){return Ns1.size() + Ns2.size() + Ni.size() + Ne.size();};
+	int NS(){return Ns1.size() + Ns2.size();};
 	
 	void clear();
 	
 	//Sobrecarga de operadores
 	bus operator=(bus b){
 		this->Ni = b.Ni;
-		this->Ns = b.Ns;
+		this->Ns1 = b.Ns1;
+		this->Ns2 = b.Ns2;
 		this->Ne = b.Ne;
 		this->station_up = b.station_up;
 		this->station_down = b.station_down;
@@ -43,7 +46,8 @@ public:
 	
 	bus operator+(agents b){
 		if(b.infected){this->Ni.push_back(b);}
-		else if(b.susceptible){this->Ns.push_back(b);}
+		else if(b.susceptible1){this->Ns1.push_back(b);}
+		else if(b.susceptible2){this->Ns2.push_back(b);}
 		else{this->Ne.push_back(b);}
 		return *this;
 	}	
